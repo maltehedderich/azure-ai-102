@@ -1,9 +1,10 @@
-from dotenv import load_dotenv
 import os
+
 from azure.ai.textanalytics import TextAnalyticsClient
 from azure.core.credentials import AzureKeyCredential
-from azure.keyvault.secrets import SecretClient
 from azure.identity import ClientSecretCredential
+from azure.keyvault.secrets import SecretClient
+from dotenv import load_dotenv
 
 
 def main():
@@ -27,25 +28,25 @@ def main():
         cog_key = secret_key.value
 
         # Get user input (until they enter "quit")
-        userText =''
-        while userText.lower() != 'quit':
-            userText = input('\nEnter some text ("quit" to stop)\n')
-            if userText.lower() != 'quit':
-                language = GetLanguage(userText)
+        user_text =''
+        while user_text.lower() != 'quit':
+            user_text = input('\nEnter some text ("quit" to stop)\n')
+            if user_text.lower() != 'quit':
+                language = get_language(user_text)
                 print('Language:', language)
 
     except Exception as ex:
         print(ex)
 
-def GetLanguage(text):
+def get_language(text):
 
     # Create client using endpoint and key
     credential = AzureKeyCredential(cog_key)
     client = TextAnalyticsClient(endpoint=cog_endpoint, credential=credential)
 
     # Call the service to get the detected language
-    detectedLanguage = client.detect_language(documents = [text])[0]
-    return detectedLanguage.primary_language.name
+    detected_language = client.detect_language(documents = [text])[0]
+    return detected_language.primary_language.name
 
 
 if __name__ == "__main__":

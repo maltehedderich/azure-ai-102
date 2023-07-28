@@ -1,7 +1,12 @@
-from dotenv import load_dotenv
+import base64
+import http.client
+import json
 import os
-import http.client, base64, json, urllib
-from urllib import request, parse, error
+import urllib
+from urllib import error, parse, request
+
+from dotenv import load_dotenv
+
 
 def main():
     global cog_endpoint
@@ -14,20 +19,20 @@ def main():
         cog_key = os.getenv('COG_SERVICE_KEY')
 
         # Get user input (until they enter "quit")
-        userText =''
-        while userText.lower() != 'quit':
-            userText = input('Enter some text ("quit" to stop)\n')
-            if userText.lower() != 'quit':
-                GetLanguage(userText)
+        user_text =''
+        while user_text.lower() != 'quit':
+            user_text = input('Enter some text ("quit" to stop)\n')
+            if user_text.lower() != 'quit':
+                get_language(user_text)
 
 
     except Exception as ex:
         print(ex)
 
-def GetLanguage(text):
+def get_language(text):
     try:
         # Construct the JSON request body (a collection of documents, each with an ID and text)
-        jsonBody = {
+        json_body = {
             "documents":[
                 {"id": 1,
                  "text": text}
@@ -35,7 +40,7 @@ def GetLanguage(text):
         }
 
         # Let's take a look at the JSON we'll send to the service
-        print(json.dumps(jsonBody, indent=2))
+        print(json.dumps(json_body, indent=2))
 
         # Make an HTTP request to the REST interface
         uri = cog_endpoint.rstrip('/').replace('https://', '')
@@ -48,7 +53,7 @@ def GetLanguage(text):
         }
 
         # Use the Text Analytics language API
-        conn.request("POST", "/text/analytics/v3.1/languages?", str(jsonBody).encode('utf-8'), headers)
+        conn.request("POST", "/text/analytics/v3.1/languages?", str(json_body).encode('utf-8'), headers)
 
         # Send the request
         response = conn.getresponse()
