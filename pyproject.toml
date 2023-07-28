@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "azure-ai-102"
+version = "0.1.0"
+description = "Lab files for Azure AI-102 AI Engineer"
+authors = ["Malte Hedderich <github@hedderich.pro>"]
+readme = "README.md"
+packages = [{include = "azure_ai_102"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+Flask = "^2.3.2"
+requests = "^2.31.0"
+matplotlib = "^3.7.2"
+Pillow = "^10.0.0"
+numpy = "^1.25.1"
+
+
+[tool.poetry.group.dev.dependencies]
+pylint = "^2.17.5"
+python-dotenv = "^1.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
