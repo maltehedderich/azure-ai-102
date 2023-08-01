@@ -31,6 +31,8 @@ def main():
             print(f"\nLanguage: {detected_language.primary_language.name}")
 
             # Get sentiment
+            sentiment_analysis = cog_client.analyze_sentiment(documents=[text])[0]
+            print(f"\nSentiment: {sentiment_analysis.sentiment}")
 
             # Get key phrases
 
