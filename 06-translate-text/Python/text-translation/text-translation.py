@@ -1,6 +1,7 @@
-from dotenv import load_dotenv
 import os
-import requests, json
+
+import requests
+from dotenv import load_dotenv
 
 
 def main():
@@ -24,29 +25,45 @@ def main():
             print("\n" + text)
 
             # Detect the language
-            language = GetLanguage(text)
+            language = get_language(text)
             print("Language:", language)
 
             # Translate if not already English
             if language != "en":
-                translation = Translate(text, language)
-                print("\nTranslation:\n{}".format(translation))
+                translation = translate(text, language)
+                print(f"\nTranslation:\n{translation}")
 
     except Exception as ex:
         print(ex)
 
 
-def GetLanguage(text):
-    # Default language is English
-    language = "en"
-
+def get_language(text):
     # Use the Translator detect function
+    path = "/detect"
+    url = translator_endpoint + path
 
+    # Build the request
+    params = {"api-version": "3.0"}
+
+    headers = {
+        "Ocp-Apim-Subscription-Key": cog_key,
+        "Ocp-Apim-Subscription-Region": cog_region,
+        "Content-type": "application/json",
+    }
+
+    body = [{"text": text}]
+
+    # Send the request and get response
+    request = requests.post(url, params=params, headers=headers, json=body)
+    response = request.json()
+
+    # Parse JSON array and get language
+    language = response[0]["language"]
     # Return the language
     return language
 
 
-def Translate(text, source_language):
+def translate(text, source_language):
     translation = ""
 
     # Use the Translator translate function
