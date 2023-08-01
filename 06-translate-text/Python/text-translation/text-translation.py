@@ -64,9 +64,26 @@ def get_language(text):
 
 
 def translate(text, source_language):
-    translation = ""
-
     # Use the Translator translate function
+    path = "/translate"
+    url = translator_endpoint + path
+
+    # Build the request
+    params = {"api-version": "3.0", "from": source_language, "to": ["en"]}
+
+    headers = {
+        "Ocp-Apim-Subscription-Key": cog_key,
+        "Ocp-Apim-Subscription-Region": cog_region,
+        "Content-type": "application/json",
+    }
+
+    body = [{"text": text}]
+
+    # Send the request and get response
+    request = requests.post(url, params=params, headers=headers, json=body)
+    response = request.json()
+
+    translation = response[0]["translations"][0]["text"]
 
     # Return the translation
     return translation
