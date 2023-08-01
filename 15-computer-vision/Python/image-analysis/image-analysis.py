@@ -16,16 +16,15 @@ def main():
     try:
         # Get Configuration Settings
         load_dotenv()
-        cog_endpoint = os.getenv('COG_SERVICE_ENDPOINT')
-        cog_key = os.getenv('COG_SERVICE_KEY')
+        cog_endpoint = os.getenv("COG_SERVICE_ENDPOINT")
+        cog_key = os.getenv("COG_SERVICE_KEY")
 
         # Get image
-        image_file = 'images/street.jpg'
+        image_file = "images/street.jpg"
         if len(sys.argv) > 1:
             image_file = sys.argv[1]
 
         # Authenticate Computer Vision client
-
 
         # Analyze image
         AnalyzeImage(image_file)
@@ -36,18 +35,17 @@ def main():
     except Exception as ex:
         print(ex)
 
+
 def AnalyzeImage(image_file):
-    print('Analyzing', image_file)
+    print("Analyzing", image_file)
 
     # Specify features to be retrieved
-    
-    
+
     # Get image analysis
 
-        
 
 def GetThumbnail(image_file):
-    print('Generating thumbnail')
+    print("Generating thumbnail")
 
     # Generate a thumbnail
 

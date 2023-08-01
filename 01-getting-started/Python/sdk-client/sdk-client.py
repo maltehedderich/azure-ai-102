@@ -12,28 +12,28 @@ def main():
     try:
         # Get Configuration Settings
         load_dotenv()
-        cog_endpoint = os.getenv('COG_SERVICE_ENDPOINT')
-        cog_key = os.getenv('COG_SERVICE_KEY')
+        cog_endpoint = os.getenv("COG_SERVICE_ENDPOINT")
+        cog_key = os.getenv("COG_SERVICE_KEY")
 
         # Get user input (until they enter "quit")
-        user_text =''
-        while user_text.lower() != 'quit':
+        user_text = ""
+        while user_text.lower() != "quit":
             user_text = input('\nEnter some text ("quit" to stop)\n')
-            if user_text.lower() != 'quit':
+            if user_text.lower() != "quit":
                 language = get_language(user_text)
-                print('Language:', language)
+                print("Language:", language)
 
     except Exception as ex:
         print(ex)
 
-def get_language(text):
 
+def get_language(text):
     # Create client using endpoint and key
     credential = AzureKeyCredential(cog_key)
     client = TextAnalyticsClient(endpoint=cog_endpoint, credential=credential)
 
     # Call the service to get the detected language
-    detected_language = client.detect_language(documents = [text])[0]
+    detected_language = client.detect_language(documents=[text])[0]
     return detected_language.primary_language.name
 
 

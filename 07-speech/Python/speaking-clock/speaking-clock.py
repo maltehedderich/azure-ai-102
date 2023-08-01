@@ -11,28 +11,26 @@ def main():
 
         # Get Configuration Settings
         load_dotenv()
-        cog_key = os.getenv('COG_SERVICE_KEY')
-        cog_region = os.getenv('COG_SERVICE_REGION')
+        cog_key = os.getenv("COG_SERVICE_KEY")
+        cog_region = os.getenv("COG_SERVICE_REGION")
 
         # Configure speech service
-        
 
         # Get spoken input
         command = TranscribeCommand()
-        if command.lower() == 'what time is it?':
+        if command.lower() == "what time is it?":
             TellTime()
 
     except Exception as ex:
         print(ex)
 
+
 def TranscribeCommand():
-    command = ''
+    command = ""
 
     # Configure speech recognition
 
-
     # Process speech input
-
 
     # Return the command
     return command
@@ -40,14 +38,11 @@ def TranscribeCommand():
 
 def TellTime():
     now = datetime.now()
-    response_text = 'The time is {}:{:02d}'.format(now.hour,now.minute)
-
+    response_text = "The time is {}:{:02d}".format(now.hour, now.minute)
 
     # Configure speech synthesis
-    
 
     # Synthesize spoken output
-
 
     # Print the response
     print(response_text)
