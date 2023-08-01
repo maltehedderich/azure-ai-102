@@ -1,9 +1,10 @@
-from dotenv import load_dotenv
 import os
+
+from azure.ai.textanalytics import TextAnalyticsClient
 
 # Import namespaces
 from azure.core.credentials import AzureKeyCredential
-from azure.ai.textanalytics import TextAnalyticsClient
+from dotenv import load_dotenv
 
 
 def main():
@@ -26,6 +27,8 @@ def main():
             print("\n" + text)
 
             # Get language
+            detected_language = cog_client.detect_language(documents=[text])[0]
+            print(f"\nLanguage: {detected_language.primary_language.name}")
 
             # Get sentiment
 
