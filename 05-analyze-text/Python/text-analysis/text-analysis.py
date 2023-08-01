@@ -35,6 +35,11 @@ def main():
             print(f"\nSentiment: {sentiment_analysis.sentiment}")
 
             # Get key phrases
+            phrases = cog_client.extract_key_phrases(documents=[text])[0].key_phrases
+            if len(phrases) > 0:
+                print("\nKey Phrases:")
+                for phrase in phrases:
+                    print(f"\t{phrase}")
 
             # Get entities
 
