@@ -1,6 +1,7 @@
-from dotenv import load_dotenv
-from datetime import datetime
 import os
+from datetime import datetime
+
+from dotenv import load_dotenv
 
 # Import namespaces
 
@@ -17,15 +18,15 @@ def main():
         # Configure speech service
 
         # Get spoken input
-        command = TranscribeCommand()
+        command = transcribe_command()
         if command.lower() == "what time is it?":
-            TellTime()
+            tell_time()
 
     except Exception as ex:
         print(ex)
 
 
-def TranscribeCommand():
+def transcribe_command():
     command = ""
 
     # Configure speech recognition
@@ -36,7 +37,7 @@ def TranscribeCommand():
     return command
 
 
-def TellTime():
+def tell_time():
     now = datetime.now()
     response_text = "The time is {}:{:02d}".format(now.hour, now.minute)
 
