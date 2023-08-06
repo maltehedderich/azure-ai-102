@@ -1,0 +1,39 @@
+{
+  "kind": "ConversationResult",
+  "result": {
+    "query": "What's today's date?",
+    "prediction": {
+      "topIntent": "GetDate",
+      "projectKind": "Conversation",
+      "intents": [
+        { "category": "GetDate", "confidenceScore": 1 },
+        { "category": "GetDay", "confidenceScore": 0.95577043 },
+        { "category": "GetTime", "confidenceScore": 0.9032623 },
+        { "category": "None", "confidenceScore": 0 }
+      ],
+      "entities": [
+        {
+          "category": "Date",
+          "text": "today",
+          "offset": 7,
+          "length": 5,
+          "confidenceScore": 1,
+          "resolutions": [
+            {
+              "resolutionKind": "DateTimeResolution",
+              "dateTimeSubKind": "Date",
+              "timex": "2023-08-06",
+              "value": "2023-08-06"
+            }
+          ],
+          "extraInformation": [
+            {
+              "extraInformationKind": "EntitySubtype",
+              "value": "datetime.date"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
