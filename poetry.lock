@@ -16,6 +16,22 @@ lazy-object-proxy = ">=1.4.0"
 wrapt = {version = ">=1.14,<2", markers = "python_version >= \"3.11\""}
 
 [[package]]
+name = "azure-ai-language-conversations"
+version = "1.1.0"
+description = "Microsoft Azure Conversational Language Understanding Client Library for Python"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "azure-ai-language-conversations-1.1.0.zip", hash = "sha256:d3b996bd7134da32db8ade1d5371fac7143b968572ed4c0fa62768d7494b831f"},
+    {file = "azure_ai_language_conversations-1.1.0-py3-none-any.whl", hash = "sha256:b96797bbc46f8a03fd5807d225b765d474b67a271727ee2bd6387a450e383c2b"},
+]
+
+[package.dependencies]
+azure-core = ">=1.24.0,<2.0.0"
+isodate = ">=0.6.1,<1.0.0"
+typing-extensions = ">=4.0.1"
+
+[[package]]
 name = "azure-ai-textanalytics"
 version = "5.3.0"
 description = "Microsoft Azure Text Analytics Client Library for Python"
@@ -1449,4 +1465,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "9507747f86e174051c637334f1be96f59e22f4304e15302f74e1eca5ef2bebf0"
+content-hash = "f48fd48abbe92f95c3405d2db7f2ae8e8a286c87b6b51191d5b2635fe39ae18c"
