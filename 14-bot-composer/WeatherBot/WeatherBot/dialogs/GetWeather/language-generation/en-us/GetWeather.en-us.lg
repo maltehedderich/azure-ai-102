@@ -1,0 +1,23 @@
+[import](common.lg)
+
+# TextInput_Prompt_gzlQci()
+[Activity
+    Text = ${TextInput_Prompt_gzlQci_text()}
+]
+
+# TextInput_Prompt_gzlQci_text()
+- Enter your city.
+# SendActivity_xL4mEi()
+[Activity
+    Text = ${SendActivity_xL4mEi_text()}
+]
+
+# SendActivity_xL4mEi_text()
+- The weather in ${dialog.city} is ${dialog.weather} and the temperature is ${dialog.temp}&deg;.
+# SendActivity_cdn1JI()
+[Activity
+    Text = ${SendActivity_cdn1JI_text()}
+]
+
+# SendActivity_cdn1JI_text()
+- I got an error: ${dialog.api_response.content.message}.
