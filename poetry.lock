@@ -242,6 +242,21 @@ files = [
 ]
 
 [[package]]
+name = "azure-cognitiveservices-vision-customvision"
+version = "3.1.0"
+description = "Microsoft Azure Custom Vision Client Library for Python"
+optional = false
+python-versions = "*"
+files = [
+    {file = "azure-cognitiveservices-vision-customvision-3.1.0.zip", hash = "sha256:89134e3fac1b3fff41666cc84a8364de5a072ee4cb7860669dc9b25acdd0257c"},
+    {file = "azure_cognitiveservices_vision_customvision-3.1.0-py2.py3-none-any.whl", hash = "sha256:32f4c764a9480b62eec211459d312a389a269d997b127fc88a2c2314a3adeac4"},
+]
+
+[package.dependencies]
+azure-common = ">=1.1,<2.0"
+msrest = ">=0.5.0"
+
+[[package]]
 name = "azure-common"
 version = "1.1.28"
 description = "Microsoft Azure Client Library for Python (Common)"
@@ -2050,4 +2065,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "97b7bb4fa3cf3fabf36855a6ba4dab73098ee9e9c0079a3e8e084936a6d50b89"
+content-hash = "eb38f75581693d786e39cf606decdcab708ef7161f5ff708c586d407244f90d2"

@@ -1,14 +1,10 @@
+import os
+import time
+
 from azure.cognitiveservices.vision.customvision.training import (
     CustomVisionTrainingClient,
 )
-from azure.cognitiveservices.vision.customvision.training.models import (
-    ImageFileCreateBatch,
-    ImageFileCreateEntry,
-    Region,
-)
 from msrest.authentication import ApiKeyCredentials
-import time
-import os
 
 
 def main():
@@ -32,16 +28,16 @@ def main():
         custom_vision_project = training_client.get_project(project_id)
 
         # Upload and tag images
-        Upload_Images("more-training-images")
+        upload_images("more-training-images")
 
         # Train the model
-        Train_Model()
+        train_model()
 
     except Exception as ex:
         print(ex)
 
 
-def Upload_Images(folder):
+def upload_images(folder):
     print("Uploading images...")
     tags = training_client.get_tags(custom_vision_project.id)
     for tag in tags:
@@ -53,7 +49,7 @@ def Upload_Images(folder):
             )
 
 
-def Train_Model():
+def train_model():
     print("Training ...")
     iteration = training_client.train_project(custom_vision_project.id)
     while iteration.status != "Completed":
