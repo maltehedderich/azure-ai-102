@@ -1,3 +1,6 @@
+import json
+import os
+
 from azure.cognitiveservices.vision.customvision.training import (
     CustomVisionTrainingClient,
 )
@@ -7,9 +10,6 @@ from azure.cognitiveservices.vision.customvision.training.models import (
     Region,
 )
 from msrest.authentication import ApiKeyCredentials
-import time
-import json
-import os
 
 
 def main():
@@ -33,12 +33,12 @@ def main():
         custom_vision_project = training_client.get_project(project_id)
 
         # Upload and tag images
-        Upload_Images("images")
+        upload_images("images")
     except Exception as ex:
         print(ex)
 
 
-def Upload_Images(folder):
+def upload_images(folder):
     print("Uploading images...")
 
     # Get the tags defined in the project
@@ -48,11 +48,11 @@ def Upload_Images(folder):
     tagged_images_with_regions = []
 
     # Get the images and tagged regions from the JSON file
-    with open("tagged-images.json", "r") as json_file:
+    with open("tagged-images.json") as json_file:
         tagged_images = json.load(json_file)
         for image in tagged_images["files"]:
             # Get the filename
-            file = image["filename"]
+            filename = image["filename"]
             # Get the tagged regions
             regions = []
             for tag in image["tags"]:
@@ -70,10 +70,10 @@ def Upload_Images(folder):
                     )
                 )
             # Add the image and its regions to the list
-            with open(os.path.join(folder, file), mode="rb") as image_data:
+            with open(os.path.join(folder, filename), mode="rb") as image_data:
                 tagged_images_with_regions.append(
                     ImageFileCreateEntry(
-                        name=file, contents=image_data.read(), regions=regions
+                        name=filename, contents=image_data.read(), regions=regions
                     )
                 )
 

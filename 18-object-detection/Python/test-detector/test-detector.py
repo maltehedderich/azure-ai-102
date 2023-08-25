@@ -1,11 +1,12 @@
+import os
+
+import numpy as np
 from azure.cognitiveservices.vision.customvision.prediction import (
     CustomVisionPredictionClient,
 )
-from msrest.authentication import ApiKeyCredentials
 from matplotlib import pyplot as plt
-from PIL import Image, ImageDraw, ImageFont
-import numpy as np
-import os
+from msrest.authentication import ApiKeyCredentials
+from PIL import Image, ImageDraw
 
 
 def main():
@@ -29,7 +30,7 @@ def main():
         image_file = "produce.jpg"
         print("Detecting objects in", image_file)
         image = Image.open(image_file)
-        h, w, ch = np.array(image).shape
+        h, w, _ = np.array(image).shape
 
         # Detect objects in the test image
         with open(image_file, mode="rb") as image_data:
@@ -41,7 +42,7 @@ def main():
 
         # Display the image with boxes around each detected object
         draw = ImageDraw.Draw(image)
-        lineWidth = int(w / 100)
+        line_width = int(w / 100)
         color = "magenta"
         for prediction in results.predictions:
             # Only show objects with a > 50% probability
@@ -59,11 +60,10 @@ def main():
                     (left, top + height),
                     (left, top),
                 )
-                draw.line(points, fill=color, width=lineWidth)
+                draw.line(points, fill=color, width=line_width)
                 # Add the tag name and probability
                 plt.annotate(
-                    prediction.tag_name
-                    + ": {0:.2f}%".format(prediction.probability * 100),
+                    prediction.tag_name + f": {prediction.probability * 100:.2f}%",
                     (left, top),
                     backgroundcolor=color,
                 )
