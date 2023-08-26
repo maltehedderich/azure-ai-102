@@ -272,6 +272,21 @@ azure-common = ">=1.1,<2.0"
 msrest = ">=0.5.0"
 
 [[package]]
+name = "azure-cognitiveservices-vision-face"
+version = "0.4.1"
+description = "Microsoft Azure Cognitive Services Face Client Library for Python"
+optional = false
+python-versions = "*"
+files = [
+    {file = "azure-cognitiveservices-vision-face-0.4.1.zip", hash = "sha256:ade59bfe897aead3ef63989acb1d674d7d1289fc0e504593faabb7d73b8d60fa"},
+    {file = "azure_cognitiveservices_vision_face-0.4.1-py2.py3-none-any.whl", hash = "sha256:b6e102d7838acd92256e9a2a7a5e9ac5c7531cf82c22b6f3e668f4b76e4bd148"},
+]
+
+[package.dependencies]
+azure-common = ">=1.1,<2.0"
+msrest = ">=0.5.0"
+
+[[package]]
 name = "azure-common"
 version = "1.1.28"
 description = "Microsoft Azure Client Library for Python (Common)"
@@ -2080,4 +2095,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "d6b25d55baa2f4349a16d1572a34375a7666797fb6a6c4b672956d95f2533704"
+content-hash = "538505809c406a17e1be058f30cb44809190ba3a037a1864cf5b80294c66fbe5"
