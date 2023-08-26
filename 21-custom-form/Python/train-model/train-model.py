@@ -1,10 +1,8 @@
 import os
-from dotenv import load_dotenv
 
-from azure.core.exceptions import ResourceNotFoundError
-from azure.ai.formrecognizer import FormRecognizerClient
 from azure.ai.formrecognizer import FormTrainingClient
 from azure.core.credentials import AzureKeyCredential
+from dotenv import load_dotenv
 
 
 def main():
@@ -13,26 +11,23 @@ def main():
         load_dotenv()
         form_endpoint = os.getenv("FORM_ENDPOINT")
         form_key = os.getenv("FORM_KEY")
-        trainingDataUrl = os.getenv("STORAGE_URL")
+        training_data_url = os.getenv("STORAGE_URL")
 
-        # Authenticate Form Training Client
-        form_recognizer_client = FormRecognizerClient(
-            form_endpoint, AzureKeyCredential(form_key)
-        )
+        # Authenticate Form Training
         form_training_client = FormTrainingClient(
             form_endpoint, AzureKeyCredential(form_key)
         )
 
         # Train model
         poller = form_training_client.begin_training(
-            trainingDataUrl, use_training_labels=True
+            training_data_url, use_training_labels=True
         )
         model = poller.result()
 
-        print("Model ID: {}".format(model.model_id))
-        print("Status: {}".format(model.status))
-        print("Training started on: {}".format(model.training_started_on))
-        print("Training completed on: {}".format(model.training_completed_on))
+        print(f"Model ID: {model.model_id}")
+        print(f"Status: {model.status}")
+        print(f"Training started on: {model.training_started_on}")
+        print(f"Training completed on: {model.training_completed_on}")
 
     except Exception as ex:
         print(ex)

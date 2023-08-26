@@ -194,6 +194,22 @@ tests = ["attrs[tests-no-zope]", "zope-interface"]
 tests-no-zope = ["cloudpickle", "hypothesis", "mypy (>=1.1.1)", "pympler", "pytest (>=4.3.0)", "pytest-mypy-plugins", "pytest-xdist[psutil]"]
 
 [[package]]
+name = "azure-ai-formrecognizer"
+version = "3.0.0"
+description = "Microsoft Azure Form Recognizer Client Library for Python"
+optional = false
+python-versions = "*"
+files = [
+    {file = "azure-ai-formrecognizer-3.0.0.zip", hash = "sha256:0628d3f64583f6e4e92c14e587ca83e36c4b558b3f81d22529b2c11692d69c00"},
+    {file = "azure_ai_formrecognizer-3.0.0-py2.py3-none-any.whl", hash = "sha256:bc5f4803304f0e4b6f9ce7d96aa53b55f491518631ae3b7ba5f8da70a05c824f"},
+]
+
+[package.dependencies]
+azure-core = ">=1.6.0,<2.0.0"
+msrest = ">=0.6.12"
+six = ">=1.6"
+
+[[package]]
 name = "azure-ai-language-conversations"
 version = "1.1.0"
 description = "Microsoft Azure Conversational Language Understanding Client Library for Python"
@@ -1856,6 +1872,20 @@ files = [
 ]
 
 [[package]]
+name = "tabulate"
+version = "0.9.0"
+description = "Pretty-print tabular data"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "tabulate-0.9.0-py3-none-any.whl", hash = "sha256:024ca478df22e9340661486f85298cff5f6dcdba14f3813e8830015b9ed1948f"},
+    {file = "tabulate-0.9.0.tar.gz", hash = "sha256:0095b12bf5966de529c0feb1fa08671671b3368eec77d7ef7ab114be2c068b3c"},
+]
+
+[package.extras]
+widechars = ["wcwidth"]
+
+[[package]]
 name = "tomlkit"
 version = "0.12.1"
 description = "Style preserving TOML library"
@@ -2095,4 +2125,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "538505809c406a17e1be058f30cb44809190ba3a037a1864cf5b80294c66fbe5"
+content-hash = "c58cc8671247c01e2d0995fdc6174846af9c23940425a5867284843aee2dbb76"

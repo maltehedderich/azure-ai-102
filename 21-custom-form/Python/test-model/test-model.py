@@ -1,10 +1,8 @@
 import os
-from dotenv import load_dotenv
 
-from azure.core.exceptions import ResourceNotFoundError
 from azure.ai.formrecognizer import FormRecognizerClient
-from azure.ai.formrecognizer import FormTrainingClient
 from azure.core.credentials import AzureKeyCredential
+from dotenv import load_dotenv
 
 
 def main():
@@ -16,9 +14,6 @@ def main():
 
         # Create client using endpoint and key
         form_recognizer_client = FormRecognizerClient(
-            form_endpoint, AzureKeyCredential(form_key)
-        )
-        form_training_client = FormTrainingClient(
             form_endpoint, AzureKeyCredential(form_key)
         )
 
@@ -34,7 +29,7 @@ def main():
         result = poller.result()
 
         for recognized_form in result:
-            print("Form type: {}".format(recognized_form.form_type))
+            print(f"Form type: {recognized_form.form_type}")
             for name, field in recognized_form.fields.items():
                 print(
                     "Field '{}' has label '{}' with value '{}' and a confidence score"
